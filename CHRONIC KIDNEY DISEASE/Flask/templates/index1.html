@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chronic Kidney Disease: A Machine Learning Web App, Built with Flask</title>
+  <style>
+    .about {
+      background-color: lavender;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 100px;
+      box-sizing: border-box;
+    }
+    .form-row input[type="text"],
+    .form-row input[type="number"] {
+      width: 100%;
+      padding: 20px 40px;
+      margin: 10px 0 20px 0;
+      display: inline-block;
+      border: 10px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .first {
+      width: 100%;
+      margin: auto;
+      text-align: center;
+    }
+    .section-title h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #222222;
+    }
+  </style>
+</head>
+<body>
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Chronic Kidney Disease</h2>
+      </div>
+      <div class="row content">
+        <div class="first">
+          <form action="{{ url_for('y_predict') }}" method="POST">
+            <div class="form-row">
+              <input id="sen2" name="sen2" type="number" placeholder="Enter your blood_urea" required>
+            </div>
+            <div class="form-row">
+              <input id="sen1" name="sen1" type="number" placeholder="Enter your blood glucose random" required>
+            </div>
+            <div class="form-row">
+              <input id="sen3" name="sen3" type="text" list="anemia-options-1" placeholder="Select anemia or not" required>
+              <datalist id="anemia-options-1">
+                <option value="Yes"></option>
+                <option value="No"></option>
+              </datalist>
+            </div>
+            <div class="form-row">
+              <input id="sen4" name="sen4" type="text" list="coronary-options-1" placeholder="Select coronary artery disease or not" required>
+              <datalist id="coronary-options-1">
+                <option value="Yes"></option>
+                <option value="No"></option>
+              </datalist>
+              <div class="form-row">
+              <input id="sen5" name="sen5" type="text" list="pus_cell-options-1" placeholder="Select pus_cell or not-" required>
+              <datalist id="pus_cell-options-1">
+                <option value="Normal"></option>
+                <option value="HIGH"></option>
+                <option value="Low"></option>
+              </datalist>
+            <div class="form-row">
+              <input id="sen6" name="sen6" type="text" list="red_blood_cell-options-1" placeholder="Select red-blood cell level-" required>
+              <datalist id="red_blood_cell-options-1">
+                <option value="Normal"></option>
+                <option value="HIGH"></option>
+                <option value="Low"></option>
+              </datalist>
+                <div class="form-row">
+              <input id="sen7" name="sen7" type="text" list="diabetesmellitus-options-1" placeholder="Select diabetesmellitus or not" required>
+                  <datalist id="diabetesmellitus-options-1">
+                <option value="Yes"></option>
+                <option value="No"></option>
+              </datalist>
+                  <div class="form-row">
+              <input id="sen8" name="sen8" type="text" list="pedaledema-options-1" placeholder="Select pedal_edema or not" required>
+                  <datalist id="pedaledema-options-1">
+                <option value="Yes"></option>
+                <option value="No"></option>
+              </datalist>
+            </div>
+            <div class="form-row">
+              <input type="submit" value="Predict">
+            </div>
